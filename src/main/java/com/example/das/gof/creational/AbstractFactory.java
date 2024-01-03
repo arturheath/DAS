@@ -2,17 +2,20 @@ package com.example.das.gof.creational;
 
 // Client code
 public class AbstractFactory {
-    private VehicleFactory factory;
 
-    public AbstractFactory(VehicleFactory factory) {
-        this.factory = factory;
-    }
+    class VehicleAssembler {
+        private VehicleFactory factory;
 
-    void assembleVehicle() {
-        Engine engine = factory.getEngine();
-        Suspension suspension = factory.getSuspension();
-        Interior interior = factory.getInterior();
-        // assemble the vehicle using these components
+        public VehicleAssembler(VehicleFactory factory) {
+            this.factory = factory;
+        }
+
+        void assembleVehicle() {
+            Engine engine = factory.getEngine();
+            Suspension suspension = factory.getSuspension();
+            Interior interior = factory.getInterior();
+            // assemble the vehicle using these components
+        }
     }
 
     // Abstract Factory Interface
@@ -44,5 +47,16 @@ public class AbstractFactory {
     class SedanEngine implements Engine { /* Implementation */ }
     class SedanSuspension implements Suspension { /* Implementation */ }
     class SedanInterior implements Interior { /* Implementation */ }
-// ...similarly for SUV components...
+
+    public static void main(String[] args) {
+        // Client decides to create a Sedan
+        VehicleFactory sedanFactory = new SedanFactory();
+        VehicleAssembler sedanAssembler = new VehicleAssembler(sedanFactory);
+        sedanAssembler.assembleVehicle();
+
+        // Client decides to create an SUV
+        VehicleFactory suvFactory = new SUVFactory();
+        VehicleAssembler suvAssembler = new VehicleAssembler(suvFactory);
+        suvAssembler.assembleVehicle();
+    }
 }
