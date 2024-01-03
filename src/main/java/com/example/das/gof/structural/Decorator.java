@@ -1,4 +1,4 @@
-package com.example.das.gof.creational;
+package com.example.das.gof.structural;
 
 public class Decorator {
     interface Drink {
