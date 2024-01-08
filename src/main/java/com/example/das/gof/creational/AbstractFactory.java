@@ -48,7 +48,11 @@ public class AbstractFactory {
     class SedanSuspension implements Suspension { /* Implementation */ }
     class SedanInterior implements Interior { /* Implementation */ }
 
-    public static void main(String[] args) {
+    class SUVEngine implements Engine { /* Implementation */ }
+    class SUVSuspension implements Suspension { /* Implementation */ }
+    class SUVInterior implements Interior { /* Implementation */ }
+
+    public void main(String[] args) {
         // Client decides to create a Sedan
         VehicleFactory sedanFactory = new SedanFactory();
         VehicleAssembler sedanAssembler = new VehicleAssembler(sedanFactory);
